@@ -1,6 +1,6 @@
+<?php require_once('./config.php'); ?>
 <!doctype html>
 <html lang="en" id="home">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -17,7 +17,7 @@
     <link rel="icon" href="assets/image/isbi.png">
 </head>
 
-<body>
+<body> 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
         <div class="container">
@@ -56,74 +56,56 @@
                     <ul class="info">
                         <li>
                             <span><img src="assets/icons/home.png"></span>
-                            <span>Jl. Buah Batu No. 212 Bandung Jawa Barat 40265 Indonesia</span>
+                            <span><?= $_settings->info('address') ?></span>
                         </li>
                         <li>
                             <span><img src="assets/icons/email.png"></span>
-                            <span>isbi@isbi.ac.id</span>
+                            <span><?= $_settings->info('email') ?></span>
                         </li>
                         <li>
                             <span><img src="assets/icons/web.png"></span>
-                            <span>http://www.isbi.ac.id</span>
+                            <span><?= $_settings->info('website') ?></span>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="contactForm">
-                <form>
+            <form action="kontak_btamu.php" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">First Name</label>
-                            <input type="text" class="form-control form-control-sm" id="inputEmail4"
-                                placeholder="First Name">
+                            <label for="tfname">First Name</label>
+                            <input type="text" class="form-control" name="tfname" id="tfname" placeholder="First Name" required="required">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Last Name</label>
-                            <input type="text" class="form-control form-control-sm" id="inputEmail4"
-                                placeholder="Last Name">
+                            <label for="tlname">Last Name</label>
+                            <input type="text" class="form-control" name="tlname" id="tlname" placeholder="Last Name" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Phone</label>
-                            <input type="number" class="form-control form-control-sm" id="inputEmail4"
-                                placeholder="Phone">
+                            <label for="phone">Phone</label>
+                            <input type="number" class="form-control" name="phone" id="phone" placeholder="Phone" required="required">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Instansi</label>
-                            <input type="text" class="form-control form-control-sm" id="inputEmail4"
-                                placeholder="Instansi">
+                            <label for="instansi">Instansi</label>
+                            <input type="text" class="form-control" name="instansi" id="instansi" placeholder="Instansi" required="required">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress">Email</label>
-                        <input type="email" class="form-control form-control-sm" id="inputAddress"
-                            placeholder="email@gmail.com">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="email@gmail.com" required="required">
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress">Message</label>
-                        <textarea type="text" class="form-control form-control-sm" rows="5" id="inputAddress"
-                            placeholder="Message"></textarea>
+                        <label for="pesan">Message</label>
+                        <textarea type="text" class="form-control" rows="5" name="pesan" id="pesan" placeholder="Message" required="required"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-primary btn-sm">Submit</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!--FOOTER-->
-    <footer class="footer bg-light">
-        <div class="container">
-            <div class="small text-center text-muted">
-                <p>ISI Yogyakarta | ISI Surakarta | ISI Denpasar | ISI Padang Panjang | ISBI Tanah Papua | ISBI Aceh
-                    <br>
-                    <b>ISBI BANDUNG</b> <br>
-                    Jl. Buah Batu No. 212 Bandung | Phone: +62 7314982 | Fax: +62 7303021 | e-Mail: <a
-                        href="https://mail.google.com/">isbi@isbi.ac.id</a><br><br>
-                    Copyright by <b>Event Team 2021 ISBI Bandung.</b></p>
-            </div>
-        </div>
-    </footer>
+    <?php require_once('inc/footer.php') ?>
     <!--AKHIR FOOTER-->
-
     <script>
         $('.carousel').carousel({
             interval: 2000 * 10
@@ -141,5 +123,4 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
-
 </html>

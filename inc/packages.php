@@ -9,15 +9,15 @@
 		$packages = $conn->query("SELECT * FROM `packages` order by rand() ");
 			while($row = $packages->fetch_assoc() ):
 				$cover='';
-				if(is_dir(base_app.'uploads/package_'.$row['id'])){
-					$img = scandir(base_app.'uploads/package_'.$row['id']);
+				if(is_dir(base_app.'uploads/'.$row['id'])){
+					$img = scandir(base_app.'uploads/'.$row['id']);
 					$k = array_search('.',$img);
 					if($k !== false)
 						unset($img[$k]);
 					$k = array_search('..',$img);
 					if($k !== false)
 						unset($img[$k]);
-					$cover = isset($img[2]) ? 'uploads/package_'.$row['id'].'/'.$img[2] : "";
+					$cover = isset($img[2]) ? 'uploads/'.$row['id'].'/'.$img[2] : "";
 				}
 				$row['description'] = strip_tags(stripslashes(html_entity_decode($row['description'])));
 		?>

@@ -46,7 +46,7 @@ class SystemSettings extends DBConnection{
 		}
 		
 		if(isset($_FILES['img']) && $_FILES['img']['tmp_name'] != ''){
-			$fname = 'uploads/logo-'.(time()).'.png';
+			$fname = 'uploads/'.(time()).'.png';
 			$dir_path =base_app. $fname;
 			$upload = $_FILES['img']['tmp_name'];
 			$type = mime_content_type($upload);
@@ -84,7 +84,7 @@ class SystemSettings extends DBConnection{
 			}
 		}
 		if(isset($_FILES['cover']) && $_FILES['cover']['tmp_name'] != ''){
-			$fname = 'uploads/cover-'.time().'.png';
+			$fname = 'uploads/'.time().'.png';
 			$dir_path =base_app. $fname;
 			$upload = $_FILES['cover']['tmp_name'];
 			$type = mime_content_type($upload);

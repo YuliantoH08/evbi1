@@ -107,7 +107,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 				if(resp ==1){
 					location.href = './?page=user/list';
 				}else{
-					$('#msg').html('<div class="alert alert-danger">Username already exist</div>')
+					$('#msg').html('<div class="alert alert-danger">Uname already exist</div>')
 					$("html, body").animate({ scrollTop: 0 }, "fast");
 				}
                 end_loader()

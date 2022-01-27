@@ -72,7 +72,7 @@ Class Users extends DBConnection {
 		}
 		
 		if(isset($_FILES['img']) && $_FILES['img']['tmp_name'] != ''){
-			$fname = 'uploads/avatar-'.$id.'.png';
+			$fname = 'uploads/'.$id.'.png';
 			$dir_path =base_app. $fname;
 			$upload = $_FILES['img']['tmp_name'];
 			$type = mime_content_type($upload);
@@ -184,7 +184,7 @@ Class Users extends DBConnection {
 		}
 		
 		if(isset($_FILES['img']) && $_FILES['img']['tmp_name'] != ''){
-			$fname = 'uploads/editor-'.$id.'.png';
+			$fname = 'uploads/'.$id.'.png';
 			$dir_path =base_app. $fname;
 			$upload = $_FILES['img']['tmp_name'];
 			$type = mime_content_type($upload);
