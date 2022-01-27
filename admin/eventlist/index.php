@@ -39,9 +39,8 @@
 				<tbody>
 					<?php 
 						$i = 1;
-						$qry = $conn->query("SELECT * from `event_list`order by `nama_event` asc ");
+						$qry = $conn->query("SELECT * from `event_list`order by `name` asc ");
 						while($row = $qry->fetch_assoc()):
-						
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>

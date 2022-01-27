@@ -68,16 +68,16 @@
 			<fieldset>
 				<legend>Kontak</legend>
 				<div class="form-group">
+					<label for="address" class="control-label">Alamat</label>
+					<textarea rows="3" class="form-control form-control-sm" name="address" id="address" style="resize:none"><?php echo $_settings->info('address') ?></textarea>
+				</div>
+				<div class="form-group">
 					<label for="email" class="control-label">Email</label>
 					<input type="email" class="form-control form-control-sm" name="email" id="email" value="<?php echo $_settings->info('email') ?>">
 				</div>
 				<div class="form-group">
-					<label for="contact" class="control-label">Contact #</label>
+					<label for="contact" class="control-label">Website</label>
 					<input type="text" class="form-control form-control-sm" name="contact" id="contact" value="<?php echo $_settings->info('contact') ?>">
-				</div>
-				<div class="form-group">
-					<label for="address" class="control-label">Address</label>
-					<textarea rows="3" class="form-control form-control-sm" name="address" id="address" style="resize:none"><?php echo $_settings->info('address') ?></textarea>
 				</div>
 			</fieldset>
 			</form>

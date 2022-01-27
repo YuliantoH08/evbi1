@@ -374,6 +374,12 @@ $Master = new Master();
 $action = !isset($_GET['f']) ? 'none' : strtolower($_GET['f']);
 $sysset = new SystemSettings();
 switch ($action) {
+	case 'save_eventlist':
+		echo $Master->save_eventlist();
+	break;
+	case 'delete_eventlist':
+		echo $Master->delete_eventlist();
+	break;
 	case 'save_department':
 		echo $Master->save_department();
 	break;

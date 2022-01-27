@@ -13,10 +13,10 @@ if(isset($_GET['id'])){
 ?>
 
 <div class="container-fluid">
-    <form action="" id="evenlist-form">
+    <form action="" id="eventlist-form">
         <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
         <div class="form-group">
-            <label for="name" class="control-label">Name</label>
+            <label for="nama" class="control-label">Name</label>
             <input type="text" name="name" id="name" class="form-control form-control-border" placeholder="Event Name" value ="<?php echo isset($name) ? $name : '' ?>" required>
         </div>
         <div class="form-group">
@@ -43,7 +43,7 @@ if(isset($_GET['id'])){
                 el.hide()
             start_loader();
             $.ajax({
-                url:_base_url_+"classes/Master.php?f=save_event",
+                url:_base_url_+"classes/Master.php?f=save_eventlist",
 				data: new FormData($(this)[0]),
                 cache: false,
                 contentType: false,
