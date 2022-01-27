@@ -38,8 +38,22 @@
 				<input type="text" class="form-control form-control-sm" name="short_name" id="short_name" value="<?php echo  $_settings->info('short_name') ?>">
 			</div>
 			<div class="form-group">
-				<label for="content[about_us]" class="control-label">About Event ISBI</label>
+				<label for="content[about_us]" class="control-label">Welcome Content</label>
 				<textarea type="text" class="form-control form-control-sm summernote" name="content[welcome]" id="welcome"><?php echo  is_file(base_app.'welcome.html') ? file_get_contents(base_app.'welcome.html') : '' ?></textarea>
+			</div>
+			<div class="form-group">
+				<label for="content[about_us]" class="control-label">About Us</label>
+				<textarea type="text" class="form-control form-control-sm summernote" name="content[about_us]" id="about_us"><?php echo  is_file(base_app.'about_us.html') ? file_get_contents(base_app.'about_us.html') : '' ?></textarea>
+			</div>
+			<div class="form-group">
+				<label for="" class="control-label">System Logo</label>
+				<div class="custom-file">
+	              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="img" onchange="displayImg(this,$(this))">
+	              <label class="custom-file-label" for="customFile">Choose file</label>
+	            </div>
+			</div>
+			<div class="form-group d-flex justify-content-center">
+				<img src="<?php echo validate_image($_settings->info('logo')) ?>" alt="" id="cimg" class="img-fluid img-thumbnail">
 			</div>
 			<div class="form-group">
 				<label for="" class="control-label">Cover</label>
@@ -54,16 +68,16 @@
 			<fieldset>
 				<legend>Kontak</legend>
 				<div class="form-group">
-					<label for="address" class="control-label">Alamat</label>
-					<textarea rows="3" class="form-control form-control-sm" name="address" id="address" style="resize:none"><?php echo $_settings->info('address') ?></textarea>
-				</div>
-				<div class="form-group">
 					<label for="email" class="control-label">Email</label>
 					<input type="email" class="form-control form-control-sm" name="email" id="email" value="<?php echo $_settings->info('email') ?>">
 				</div>
 				<div class="form-group">
-					<label for="website" class="control-label">Website</label>
-					<input type="text" class="form-control form-control-sm" name="website" id="website" value="<?php echo $_settings->info('website') ?>">
+					<label for="contact" class="control-label">Contact #</label>
+					<input type="text" class="form-control form-control-sm" name="contact" id="contact" value="<?php echo $_settings->info('contact') ?>">
+				</div>
+				<div class="form-group">
+					<label for="address" class="control-label">Address</label>
+					<textarea rows="3" class="form-control form-control-sm" name="address" id="address" style="resize:none"><?php echo $_settings->info('address') ?></textarea>
 				</div>
 			</fieldset>
 			</form>

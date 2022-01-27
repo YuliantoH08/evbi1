@@ -24,7 +24,7 @@
                 <nav class="mt-4">
                    <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-compact nav-flat nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>" class="nav-link nav-home">
+                      <a href="./" class="nav-link nav-home">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                           Home
@@ -73,15 +73,7 @@
                       <a href="<?php echo base_url ?>admin/?page=eventlist" class="nav-link nav-eventlist">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
-                          Input Event
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=eventlist" class="nav-link nav-eventlist">
-                        <i class="nav-icon fas fa-th-list"></i>
-                        <p>
-                          List event
+                          List Event
                         </p>
                       </a>
                     </li>
