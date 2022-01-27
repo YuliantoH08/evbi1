@@ -1,135 +1,308 @@
 <?php require_once('./config.php'); ?>
- <!DOCTYPE html>
-<html lang="en" class="" style="height: auto;">
-<style>
-  #header{
-    height:70vh;
-    width:calc(100%);
-    position:relative;
-    top:-1em;
-  }
-  #header:before{
-    content:"";
-    position:absolute;
-    height:calc(100%);
-    width:calc(100%);
-    background-image:url(<?= validate_image($_settings->info("cover")) ?>);
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-position: center center;
-  }
-  #header>div{
-    position:absolute;
-    height:calc(100%);
-    width:calc(100%);
-    z-index:2;
-  }
+<!doctype html>
+<html lang="en" id="home">
 
-  #top-Nav a.nav-link.active {
-      color: #001f3f;
-      font-weight: 900;
-      position: relative;
-  }
-  #top-Nav a.nav-link.active:before {
-    content: "";
-    position: absolute;
-    border-bottom: 2px solid #001f3f;
-    width: 33.33%;
-    left: 33.33%;
-    bottom: 0;
-  }
-</style>
-<?php require_once('inc/header.php') ?>
-  <body class="layout-top-nav layout-fixed layout-navbar-fixed" style="height: auto;">
-    <div class="wrapper">
-     <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home';  ?>
-     <?php require_once('inc/topBarNav.php') ?>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+    <title>Kegiatan ISBI Bandung</title>
+    <link rel="icon" href="assets/image/isbi.png">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+	 <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home';  ?>
      <?php if($_settings->chk_flashdata('success')): ?>
       <script>
         alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
       </script>
       <?php endif;?>    
-      <!-- Content Wrapper. Contains page content -->
-        <?php if($page == "home" || $page == "about_us"): ?>
-          <div id="header" class="shadow mb-4">
-              <div class="d-flex justify-content-center h-100 w-100 align-items-center flex-column px-3">
-                  <h1 class="w-100 text-center site-title"><?php echo $_settings->info('name') ?></h1>
-                  <a href="./?page=projects" class="btn btn-lg btn-light rounded-pill w-25" id="enrollment"><b>Kalender</b></a>
-              </div>
-          </div>
-        <?php endif; ?>
-        <!-- Main content -->
-        <section class="content ">
-          <div class="container">
-            <?php 
-              if(!file_exists($page.".php") && !is_dir($page)){
-                  include '404.html';
-              }else{
-                if(is_dir($page))
-                  include $page.'/index.php';
-                else
-                  include $page.'.php';
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand page-scroll" href="#home">
+                <img src="./assets/image/isbi.png" width="45" class="d-inline-block"> &nbsp; ISBI Bandung
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link page-scroll" href="#"><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#tentang">About</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle page-scroll" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-toggle="dropdown" aria-expanded="false">
+                            Event
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Festival</a>
+                            <a class="dropdown-item" href="#">Lomba</a>
+                            <a class="dropdown-item" href="#">Pameran</a>
+                            <a class="dropdown-item" href="#">Seminar</a>
+                        </div>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#event">Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="gedung.php">Gedung</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="kontak.php">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR AKHIR -->
 
-              }
-            ?>
-          </div>
-        </section>
-        <!-- /.content -->
-  <div class="modal fade" id="confirm_modal" role='dialog'>
-    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">Confirmation</h5>
-      </div>
-      <div class="modal-body">
-        <div id="delete_content"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='confirm' onclick="">Continue</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="uni_modal" role='dialog'>
-    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title"></h5>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="uni_modal_right" role='dialog'>
-    <div class="modal-dialog modal-full-height  modal-md" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span class="fa fa-arrow-right"></span>
+
+    <!-- SLIDER -->
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-interval="2000">
+                <img src="assets/image/satu.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4">FILM DAN TELEVISI <br> <span>ISBI Bandung</span></h1>
+                    <a class="page-scroll" href="kalender.php">
+                        <div class="slider-btn">
+                            <button class="btn btnevt">CALENDAR EVENT</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item" data-interval="2000">
+                <img src="assets/image/dua.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4">SENI KARAWITAN <br> <span>ISBI Bandung</span></h1>
+                    <a class="page-scroll" href="kalender.php">
+                        <div class="slider-btn">
+                            <button class="btn btnevt">CALENDAR EVENT</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="carousel-item" data-interval="2000">
+                <img src="assets/image/tiga.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4">MUSIK BAMBU <br> <span>ISBI Bandung</span></h1>
+                    <a class="page-scroll" href="kalender.php">
+                        <div class="slider-btn">
+                            <button class="btn btnevt">CALENDAR EVENT</button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
         </button>
-      </div>
-      <div class="modal-body">
-      </div>
-      </div>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </button>
     </div>
-  </div>
-  <div class="modal fade" id="viewer_modal" role='dialog'>
-    <div class="modal-dialog modal-md" role="document">
-      <div class="modal-content">
-              <button type="button" class="btn-close" data-dismiss="modal"><span class="fa fa-times"></span></button>
-              <img src="" alt="">
-      </div>
-    </div>
-  </div>
-      </div>
-      <!-- /.content-wrapper -->
+    <!-- SLIDER AKHIR -->
+
+    <!-- ABOUT -->
+    
+    <section class="tentang" id="tentang">
+        <div class="container container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2>About Event ISBI</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-8">
+                <?php include("welcome.html") ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- AKHIR ABOUT -->
+
+    <!-- TODAY -->
+    <section class="today" id="today">
+        <div class="container container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2>Today</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="description-container d-flex justify-content-center">
+                    <img src="./assets/image/desc.png" alt="desc">
+                    <div>
+                        <div>
+                            <p>01 Jan 2022</p>
+                            <h2>Hasil Seleksi Seleksi Terbuka Jabatan Pimpinan Tinggi (JPT) Eselon II Kepala Biro
+                                Akademik dan Umum Institut Seni Budaya Indonesia Bandung</h2>
+                            <p>Menindaklanjuti Pengumuman Panitia Seleksi Terbuka Jabatan Pimpinan Tinggi (JPT) Eselon
+                                II Kepala Biro Akademik dan Umum Institut Seni Budaya Indonesia......</p>
+                        </div>
+                        <div class="description-left-footer">
+                            <a data-toggle="modal" data-target="#exampleModalCenter" href="">
+                                <p class="font-weight-bold">Read more</p>
+                            </a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <img src="./assets/image/desc.png" class="d-inline-block">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle"><b>Hasil Seleksi Seleksi
+                                                    Terbuka Jabatan Pimpinan Tinggi (JPT) Eselon II Kepala Biro
+                                                    Akademik dan Umum Institut Seni Budaya Indonesia Bandung </b></h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p style="text-align:justify">
+                                                Menindaklanjuti Pengumuman Panitia Seleksi Terbuka Jabatan Pimpinan
+                                                Tinggi
+                                                (JPT) Eselon II Kepala Biro Akademik dan Umum Institut Seni Budaya
+                                                Indonesia</p><br>
+                                            <p style="font-size:13px">
+                                                <br>#ISBIBandung<br>#KampusMerdeka<br>#MerdekaBelajar<br>
+                                                #CentreofCreativityBasedonArtManagementandNetworking</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- AKHIR TODAY -->
+
+    <!-- ISI -->
+    <section class="event" id="event">
+        <div class="container container-fluid">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h2>Event</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#e3c529" /><text x="50%" y="50%"
+                                    fill="#fff">Thumbnail</text>
+                            </svg>
+
+                            <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="card-btn">
+                                        <a href="kegiatan.php">
+                                        <button class="btn btnview">View</button>
+                                        </a>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#e3c529" /><text x="50%" y="50%"
+                                    fill="#fff">Thumbnail</text>
+                            </svg>
+
+                            <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="card-btn">
+                                        <button class="btn btnview">View</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#e3c529" /><text x="50%" y="50%"
+                                    fill="#fff">Thumbnail</text>
+                            </svg>
+
+                            <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to
+                                    additional content. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="card-btn">
+                                        <button class="btn btnview">View</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- AKHIR ISI -->
+
+    <!--FOOTER-->
       <?php require_once('inc/footer.php') ?>
-  </body>
+    <!--AKHIR FOOTER-->
+
+    <script>
+        $('.carousel').carousel({
+            interval: 2000 * 10
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js"></script>
+
+
+</body>
+
 </html>

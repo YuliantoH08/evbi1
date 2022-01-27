@@ -231,7 +231,7 @@ Class Master extends DBConnection {
 				$resp['msg'] = "Archive details was updated successfully.";
 
 				if(isset($_FILES['img']) && $_FILES['img']['tmp_name'] != ''){
-					$fname = 'uploads/banners/archive-'.$aid.'.png';
+					$fname = 'uploads/'.$aid.'.png';
 					$dir_path =base_app. $fname;
 					$upload = $_FILES['img']['tmp_name'];
 					$type = mime_content_type($upload);
@@ -263,7 +263,7 @@ Class Master extends DBConnection {
 					}
 				}
 				if(isset($_FILES['pdf']) && $_FILES['pdf']['tmp_name'] != ''){
-					$fname = 'uploads/pdf/archive-'.$aid.'.pdf';
+					$fname = 'uploads/'.$aid.'.pdf';
 					$dir_path =base_app. $fname;
 					$upload = $_FILES['pdf']['tmp_name'];
 					$type = mime_content_type($upload);
@@ -323,6 +323,51 @@ Class Master extends DBConnection {
 		$this->settings->set_flashdata('success',$resp['msg']);
 		return json_encode($resp);
 	}
+	function save_btamu(){
+		$_POST['tfname'] = $tfname;
+		$_POST['tlname'] = $tlname;
+		$_POST['phone'] = $phone;
+		$_POST['instansi'] = $instansi;
+		$_POST['email'] = $email;
+		$_POST['pesan'] = $pesan;
+		extract($_POST);
+		$data = "";
+		if(empty($id)){
+			$sql = "INSERT INTO `btamu` set {$data} ";
+		}else{
+			$sql = "UPDATE `btamu` set {$data} where id = '{$id}' ";
+		}
+		$save = $this->conn->query($sql);
+		if($save){
+			$bid = !empty($id) ? $id : $this->conn->insert_id;
+			$resp['status'] = 'success';
+			$resp['id'] = $id;
+			if(empty($id))
+				$resp['msg'] = "Archive was successfully submitted";
+			else
+				$resp['msg'] = "Archive details was updated successfully.";
+		}else{
+			$resp['status'] = 'failed';
+			$resp['msg'] = "An error occured.";
+			$resp['err'] = $this->conn->error."[{$sql}]";
+		}
+		if($resp['status'] =='success')
+		$this->settings->set_flashdata('success',$resp['msg']);
+		return json_encode($resp);
+	}
+	function delete_btamu(){
+		extract($_POST);
+		$del = $this->conn->query("DELETE FROM `btamu` where id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success',"Buku Tamu has been deleted successfully.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+
+	}
 }
 
 $Master = new Master();
@@ -355,6 +400,12 @@ switch ($action) {
 	break;
 	case 'delete_payment':
 		echo $Master->delete_payment();
+	break;
+	case 'save_btamu':
+		echo $Master->save_btamu();
+	break;
+	case 'delete_btamu':
+		echo $Master->delete_btamu();
 	break;
 	default:
 		// echo $sysset->index();
