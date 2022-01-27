@@ -73,15 +73,7 @@
                       <a href="<?php echo base_url ?>admin/?page=eventlist" class="nav-link nav-eventlist">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
-                          Input Event
-                        </p>
-                      </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=event" class="nav-link nav-event">
-                        <i class="nav-icon fas fa-th-list"></i>
-                        <p>
-                          List event
+                          List Event
                         </p>
                       </a>
                     </li>
