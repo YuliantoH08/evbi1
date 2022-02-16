@@ -137,7 +137,6 @@ Class Master extends DBConnection {
 				}
 			}
 			$_POST['event_code'] = $code;
-			$_POST['users'] = $this->settings->userdata('id');
 		}
 		if(isset($_POST['deskripsi']))
 		$_POST['deskripsi'] = htmlentities($_POST['deskripsi']);
@@ -161,7 +160,6 @@ Class Master extends DBConnection {
 			$id = !empty($id) ? $id : $this->conn->insert_id;
 			$resp['status'] = 'success';
 			$resp['id'] = $id;
-			return  $insert_id;
 			if(empty($id))
 				$resp['msg'] = "event was successfully submitted";
 			else

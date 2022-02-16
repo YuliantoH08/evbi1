@@ -7,11 +7,6 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
             $$k = $v;
         }
     }
-    if(isset($users)){
-        if($users != $_settings->userdata('id')){
-            echo "<script> alert('You don\'t have an access to this page'); location.replace('./'); </script>";
-        }
-    }
 }
 ?>
 <style>
@@ -74,7 +69,6 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                            <krwidget widget-name='dateRange' widget-type='koolreport/inputs/DateRangePicker' class='amazing'>
                                 <label for="tanggal_dimulai" class="control-label text-navy">Tanggal Event</label>
                                 <input name="tanggal_dimulai" id="tanggal_dimulai" class="form-control form-control-border" value="<?= isset($tanggal_dimulai) ?$tanggal_dimulai : "" ?>" required>
                             </div>
@@ -91,7 +85,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group text-center">
-                                <button class="btn btn-default bg-navy btn-flat"> Update</button>
+                                <button type="submit" class="btn btn-default bg-navy btn-flat"> Update</button>
                                 <a href="./?page=profile" class="btn btn-light border btn-flat"> Cancel</a>
                             </div>
                         </div>
@@ -167,7 +161,6 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 },
                 success:function(resp){
                     if(resp.status == 'success'){
-                        location.href= "../../?page=view_event&id="+resp.id
                     }else if(!!resp.msg){
                         el.text(resp.msg)
                         el.addClass("alert-danger")
@@ -190,8 +183,6 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 $(function() {
   $('input[name="tanggal_dimulai"]').daterangepicker({
     opens: 'left'
-  }, function(start, end, label) {
-    console.log("Pilih tanggal: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
   });
 });
 </script>

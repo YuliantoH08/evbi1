@@ -32,6 +32,7 @@
 						<th>Date Created</th>
 						<th>Kategori</th>
 						<th>Judul</th>
+						<th>Lokasi</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -43,11 +44,13 @@
 						while($row = $qry->fetch_assoc()):
 						
 					?>
+					
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['tanggal_dimulai'])) ?></td>
+							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['tanggal_dibuat'])) ?></td>
 							<td class=""><?php echo $row['eventlist'] ?></td>
-							<td><?php echo ucwords($row['id']) ?></td>
+							<td><?php echo ucwords($row['nama_event']) ?></td>
+							<td class=""><?php echo $row['lokasi'] ?></td>
 							<td class="text-center">
                                 <?php
                                     switch($row['status']){

@@ -69,6 +69,15 @@
                 </li>
                     <?php if($_settings->userdata('type') == 1): ?>
                     <li class="nav-header">Maintenance</li>
+                    
+                    <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=event" class="nav-link nav-system_info">
+                        <i class="nav-icon fas fa-scroll"></i>
+                        <p>
+                          event
+                        </p>
+                      </a>
+                    </li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=eventlist" class="nav-link nav-eventlist">
                         <i class="nav-icon fas fa-th-list"></i>
@@ -79,7 +88,7 @@
                     </li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=curriculum" class="nav-link nav-curriculum">
-                        <i class="nav-icon fas fa-scroll"></i>
+                        <i class="nav-icon fas fa-building"></i>
                         <p>
                           Gedung
                         </p>
@@ -87,7 +96,7 @@
                     </li>
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=btamu" class="nav-link nav-system_info">
-                        <i class="nav-icon fas fa-cogs"></i>
+                        <i class="nav-icon fas fa-address-book"></i>
                         <p>
                           Buku Tamu
                         </p>
