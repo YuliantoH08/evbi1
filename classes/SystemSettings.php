@@ -66,7 +66,7 @@ class SystemSettings extends DBConnection{
 				if($gdImg){
 						if(is_file($dir_path))
 						unlink($dir_path);
-						$uploaded_img = imagepng($t_image,$dir_path);
+						$uploaded_img = imagePng($t_image,$dir_path);
 						imagedestroy($gdImg);
 						imagedestroy($t_image);
 				}else{
@@ -102,7 +102,7 @@ class SystemSettings extends DBConnection{
 				if($gdImg){
 						if(is_file($dir_path))
 						unlink($dir_path);
-						$uploaded_img = imagepng($t_image,$dir_path);
+						$uploaded_img = imagePng($t_image,$dir_path);
 						imagedestroy($gdImg);
 						imagedestroy($t_image);
 				}else{

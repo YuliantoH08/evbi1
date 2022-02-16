@@ -11,8 +11,7 @@
 	<div class="card-header">
 		<h3 class="card-title">List Event </h3>
 		<div class="card-tools">
-        <a href="<?php echo base_url ?>admin/?page=eventlist/submit-eventlist" class="nav-link nav-eventlist"><span class="fas fa-plus"></span>  Add Event</a>
-			
+        <a href="<?php echo base_url ?>admin/?page=event/add_event" class="nav-link nav-eventlist"><span class="fas fa-plus"></span>  Add Event</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -40,13 +39,13 @@
 				<tbody>
 					<?php 
 						$i = 1;
-						$qry = $conn->query("SELECT c.*, d.name as eventlist from `event` c inner join `event_list` d on c.eventlist_id = d.id order by c.`name` asc");
+						$qry = $conn->query("SELECT c.*, d.name as eventlist from `event` c inner join `event_list` d on c.event_list_id = d.id order by c.`nama_event` asc");
 						while($row = $qry->fetch_assoc()):
 						
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['tanggal_dimuli'])) ?></td>
+							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['tanggal_dimulai'])) ?></td>
 							<td class=""><?php echo $row['eventlist'] ?></td>
 							<td><?php echo ucwords($row['id']) ?></td>
 							<td class="text-center">

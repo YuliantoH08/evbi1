@@ -71,27 +71,23 @@
             </div>
             <div class="contactForm">
             <form action="kontak_btamu.php" method="post">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="tfname">First Name</label>
-                            <input type="text" class="form-control" name="tfname" id="tfname" placeholder="First Name" required="required">
+                        <div class="form-group">
+                            <label for="nama">Nama Lengkap</label>
+                            <input type="text" minlength="2" maxlength="50" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap" onkeypress="return event.charCode < 48 || event.charCode  >57" required="required">
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="tlname">Last Name</label>
-                            <input type="text" class="form-control" name="tlname" id="tlname" placeholder="Last Name" required>
-                        </div>
+                        <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="phone">Phone</label>
-                            <input type="number" class="form-control" name="phone" id="phone" placeholder="Phone" required="required">
+                            <input type="text" maxlength="15" class="form-control" name="phone" onkeypress="return event.charCode >= 48 && event.charCode <=57" id="phone" placeholder="contoh : 628912345678" required="required">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="instansi">Instansi</label>
-                            <input type="text" class="form-control" name="instansi" id="instansi" placeholder="Instansi" required="required">
+                            <input type="text" maxlength="100" class="form-control" name="instansi" id="instansi" placeholder="Instansi" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="email@gmail.com" required="required">
+                        <input type="email" maxlength="320" class="form-control" maxlength="14" name="email" id="email" placeholder="email@gmail.com" required="required">
                     </div>
                     <div class="form-group">
                         <label for="pesan">Message</label>

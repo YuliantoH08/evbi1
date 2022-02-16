@@ -2,21 +2,21 @@
 <?php
 include './config.php';
 
-$tfname =  $_POST['tfname'];
-$tlname = $_POST['tlname'];
+$nama =  $_POST['nama'];
 $phone = $_POST['phone'];
 $instansi =  $_POST['instansi'];
 $email = $_POST['email'];
 $pesan = $_POST['pesan'];
 
       $query = "INSERT INTO btamu
-      (id, tfname, tlname, phone, instansi, email, pesan)
+      (id, nama, phone, instansi, email, pesan)
       VALUES
-      ('$id','$tfname', '$tlname', '$phone', '$instansi', '$email', '$pesan')";
+      ('$id','$nama', '$phone', '$instansi', '$email', '$pesan')";
     
 $sql = mysqli_query($conn, $query);
 		if($sql){
 			header("location:kontak.php");
+			echo "Berhasil ditambahkan";
 		}else{
 			echo "Maaf Terjadi Kesalahan";
 		}

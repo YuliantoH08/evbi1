@@ -45,7 +45,7 @@
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
 							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['tanggal_dimulai'])) ?></td>
-							<td><?php echo ucwords($row['id']) ?></td>
+							<td><?php echo ucwords($row['name']) ?></td>
 							<td class="truncate-1"><?php echo $row['description'] ?></td>
 							<td class="text-center">
                                 <?php
@@ -89,10 +89,10 @@
 			uni_modal("Event Details","eventlist/manage_eventlist.php?id="+$(this).attr('data-id'))
 		})
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this Event permanently?","delete_eventlist",[$(this).attr('data-id')])
+			_conf("Yakin Menghapus Event ?","delete_eventlist",[$(this).attr('data-id')])
 		})
 		$('.view_data').click(function(){
-			uni_modal("eventlist Details","eventlist/view_eventlist.php?id="+$(this).attr('data-id'))
+			uni_modal("Buku Tamu","eventlist/view_eventlist.php?id="+$(this).attr('data-id'))
 		})
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
 		$('.table').dataTable({

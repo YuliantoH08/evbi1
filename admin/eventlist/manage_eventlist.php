@@ -16,7 +16,7 @@ if(isset($_GET['id'])){
     <form action="" id="eventlist-form">
         <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
         <div class="form-group">
-            <label for="nama" class="control-label">Name</label>
+            <label for="name" class="control-label">Name</label>
             <input type="text" name="name" id="name" class="form-control form-control-border" placeholder="Event Name" value ="<?php echo isset($name) ? $name : '' ?>" required>
         </div>
         <div class="form-group">

@@ -26,8 +26,8 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>First Name</th>
-						<th>Last Name</th>
+						<th>Tanggal</th>
+						<th>Nama</th>
 						<th>Phone</th>
 						<th>Instansi</th>
 						<th>Email</th>
@@ -43,8 +43,8 @@
 					?>
 						<tr>
 							<td class="text-center"><?php echo $i++; ?></td>
-							<td class=""><?php echo $row['tfname'] ?></td>
-							<td class=""><?php echo $row['tlname'] ?></td>
+							<td class=""><?php echo $row['Tanggal'] ?></td>
+							<td class=""><?php echo $row['nama'] ?></td>
 							<td class=""><?php echo $row['phone'] ?></td>
 							<td class=""><?php echo $row['instansi'] ?></td>
 							<td class=""><?php echo $row['email'] ?></td>

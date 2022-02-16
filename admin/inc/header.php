@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="<?php echo base_url ?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="<?php echo base_url ?>plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="<?php echo base_url ?>plugins/daterangepicker/extra.css">
     <!-- summernote -->
     <link rel="stylesheet" href="<?php echo base_url ?>plugins/summernote/summernote-bs4.min.css">
      <!-- SweetAlert2 -->

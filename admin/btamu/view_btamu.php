@@ -20,7 +20,7 @@ if(isset($_GET['id'])){
     <dl>
         <dt class="text-muted">Buku Tamu</dt>
         <dt class="text-muted">Nama</dt>
-        <dd class='pl-4 fs-4 fw-bold'><?= isset($tfname) ? $tfname : '' ?>. <?= isset($tlname) ? $tlname : '' ?> </dd>
+        <dd class='pl-4 fs-4 fw-bold'><?= isset($nama) ? $nama : '' ?></dd>
         <dt class="text-muted">Phone</dt>
         <dd class='pl-4 fs-4 fw-bold'><?= isset($phone) ? $phone : '' ?></dd>
         <dt class="text-muted">Instansi</dt>

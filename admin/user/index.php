@@ -35,7 +35,7 @@ foreach($user->fetch_array() as $k =>$v){
 				<div class="form-group">
 					<label for="" class="control-label">Avatar</label>
 					<div class="custom-file">
-		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="img" onchange="displayImg(this,$(this))">
+		              <input type="file" class="custom-file-input rounded-circle" id="customFile" name="image" onchange="displayImg(this,$(this))">
 		              <label class="custom-file-label" for="customFile">Choose file</label>
 		            </div>
 				</div>
@@ -85,10 +85,10 @@ var _this = $(this)
 		    method: 'POST',
 		    type: 'POST',
 			success:function(resp){
-				if(resp ==1){
+				if(resp == 1){
 					location.reload()
 				}else{
-					$('#msg').html('<div class="alert alert-danger">Username already exist</div>')
+					$('#msg').html('<div class="alert alert-danger">Username alreaexist</div>')
 					end_loader()
 				}
 			}

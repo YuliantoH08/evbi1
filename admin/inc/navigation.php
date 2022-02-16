@@ -60,7 +60,7 @@
                         </ul>
                       </li>
                 <li class="nav-item">
-                <a href="<?php echo base_url ?>./?page=about" class="nav-link nav-about">
+                <a href="./evbi/kalender.php" class="nav-link nav-about">
                     <i class="nav-icon fas fa-calendar-alt"></i>
                     <p>
                       Kalender
